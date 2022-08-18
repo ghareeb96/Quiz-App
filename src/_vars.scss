@@ -1,0 +1,21 @@
+// Colors
+
+$accent-color: #2F566C;
+$main-background: rgb(24, 106, 152);
+$background-gradient: linear-gradient(135deg, rgba(24,106,152,1) 0%, rgba(47,150,189,1) 50%, rgba(70,187,210,1) 100%);
+
+
+// Responsive widths
+
+$large-screen: 1536px;
+$medium-screen: 1024px;
+$small-screen: 768px;
+$xSmall-screen: 480px;
+
+// flex-center
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

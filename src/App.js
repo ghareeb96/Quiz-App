@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.scss';
+import Practice from './Components/Practice/Practice';
+import Rank from './Components/Rank/Rank';
+import Start from './Components/Start/Start';
+import { ReactComponent as QuestionMark } from './questionMark.svg'
 
 function App() {
+  const [name, setName] = useState('')
+  const [activePage, setActivePage] = useState('start-page')
+  const [score, setScore] = useState(0)
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="background">
+        <QuestionMark className='icon watermark' />
+      </div>
+
+      {
+        activePage === 'start-page' ?
+          <Start
+            name={name}
+            setName={setName}
+            setActivePage={setActivePage}
+          />
+
+          : activePage === 'practice-page' ?
+            <Practice
+              score={score}
+              setScore={setScore}
+              setActivePage={setActivePage}
+
+            />
+            :
+            <Rank 
+            setActivePage={setActivePage}
+            score={score}
+            name={name}
+            
+            />
+
+      }
+
+
+
+
     </div>
   );
 }

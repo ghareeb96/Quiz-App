@@ -1,0 +1,119 @@
+@import '../../vars';
+
+#practice-page{
+    .container{
+        background-color: rgba(255, 255, 255, 0.6);
+        position: relative;
+        flex-direction: column;
+        @include flex-center;
+
+        .progress-bar{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0.5rem;
+            background-color: #fff;
+            
+            .progress-bar-inner{
+                height: 100%;
+                width: 10%;
+                background-color: $accent-color;
+                transition: all 0.2s ease-out;
+            }
+        }
+
+        .question{
+            width: 70%;
+            margin-top: 1rem;
+            
+            .question-container{
+                background-color: #fff;
+                width: 100%;
+                position: relative;
+                text-align: center;
+                padding: 2.4rem;
+                border-radius: 10px;
+                margin-bottom: 1rem;
+
+                .question-header{
+                    position: absolute;
+                    width: 85%;
+                    left: 50%;
+                    top: 0;
+                    transform: translate(-50%, -50%);
+                    background-color: $accent-color;
+                    text-align: center;
+                    padding: 0.6rem;
+                    border-radius: 10px;
+                    h5{
+                        color: white;
+                    }
+                }
+            }
+
+            .answers{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                
+                .answer-option{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    background-color: #fff;
+                    border-radius: 10px;
+                    margin: 0.3rem 0;
+
+                    .icon{
+                        width: 0.5rem;
+                        margin-right: 0.4rem;
+                        pointer-events: none;
+                    }
+                    h4{
+                        pointer-events: none;
+
+                    }
+
+                    &.correct-answer{
+                        background-color: rgb(146, 245, 167);
+                    }
+                    &.incorrect-answer{
+                        background-color: rgb(252, 174, 174);
+                    }
+
+                    
+                }
+            }
+
+            .answer-feedback{
+                text-align: center;
+                position: absolute;
+                bottom: 5%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                h2{
+                    letter-spacing: 1px;
+                }
+
+                &.correct-feedback{
+                    color:rgb(10, 110, 32)
+                }
+
+                &.incorrect-feedback{
+                    color:rgb(155, 12, 12)
+                }
+            }
+        }
+        
+    }
+}
+
+@media (hover: hover){
+    
+    button.answer-option:hover{
+        background-color: rgb(240, 240, 240);
+    }
+    
+}

@@ -1,0 +1,153 @@
+@import './vars';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    font-size: 22px;
+    font-family: 'Roboto',sans-serif;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    background: $main-background;
+    background: $background-gradient;
+}
+
+button{
+    outline: none;
+    border: none;
+    font-size: 0.8rem;
+    padding: 0.8rem 1.4rem;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+
+    &.primary-btn{
+        color: white;
+        background-color: $accent-color;
+    }
+
+    &.secondary-btn{
+        color: $accent-color;
+        background: none;
+        border: 1px solid $accent-color;
+    }
+}
+
+#root{
+    width: 100%;
+    height: 100vh;
+}
+
+.App{
+    width: 100%;
+    height: 100%;
+    
+    .background{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        overflow: hidden;
+        z-index: -10;
+
+        .watermark{
+            width: 30vw;
+            position: absolute;
+            bottom: 0;
+            right: -5vw;
+            transform: rotate(20deg);
+            fill: $accent-color;
+            opacity: 0.4;
+        }
+    }
+
+    .page{
+        width: 100%;
+        height: 100%;
+        @include flex-center;
+
+
+        .container{
+            width: 70%;
+            height: 80%;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 10px 10px 40px 4px rgba(0, 0, 0, 0.25);
+            animation: popUp;
+            animation-duration: 0.4s;
+            max-height: 800px;
+            max-width: 1366px;
+        }
+    }
+}
+
+@keyframes popUp {
+    0%{
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+
+    }
+}
+
+
+@media screen and (max-width: $large-screen) {
+    html{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: $medium-screen) {
+    
+    .App{
+        .background{
+            
+            .watermark{
+                width: 300px;
+                opacity: 0.6;
+            }
+        }
+        .page{
+            .container{
+                width: 80%;
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: $small-screen) {
+
+    .App{
+        .page{
+            .container{
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: $xSmall-screen) {
+
+    html{
+        font-size: 16px;
+    }
+    .App{
+        .page{
+            .container{
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+    }
+}
