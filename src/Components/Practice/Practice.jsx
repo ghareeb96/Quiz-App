@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Loading from '.././Loading/Loading';
 import axios from 'axios'
 import { ReactComponent as Arrow } from './arrow.svg'
 
@@ -115,7 +116,7 @@ const Practice = ({score, setScore, setActivePage}) => {
                         </div>
                     </div>
                     :
-                    <></>
+                    <Loading />
             }
 
         </>

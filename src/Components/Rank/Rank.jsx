@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Loading from '.././Loading/Loading';
 import axios from 'axios'
 import Card from './Card/Card'
 import './Rank.scss'
@@ -15,34 +16,42 @@ const Rank = ({ score, setActivePage, name }) => {
     }, [])
 
     return (
-        <div id='rank-page' className='page'>
-            <div className="container">
-
-                {rank === 100 ?
-                    <Card
-                        score={score}
-                        rank={rank}
-                        name={name}
-                        message='Well Done '
-                        isSucceed={true}
-                    />
+        <>
+            {
+                rank === null ?
+                    <Loading />
                     :
-                    <Card
-                        score={score}
-                        rank={rank}
-                        name={name}
-                        message='Keep practicing '
-                        isSucceed={false}
-                    />
+                    <div id='rank-page' className='page'>
+                        <div className="container">
 
-                }
-                <div className="action-btns">
-                    <button className="primary-btn" onClick={() => setActivePage('practice-page')}>Try Again</button>
-                    <button className="secondary-btn" onClick={() => setActivePage('start-page')}>Finish practice</button>
-                </div>
-            </div>
+                            {rank === 100 ?
+                                <Card
+                                    score={score}
+                                    rank={rank}
+                                    name={name}
+                                    message='Well Done '
+                                    isSucceed={true}
+                                />
+                                :
+                                <Card
+                                    score={score}
+                                    rank={rank}
+                                    name={name}
+                                    message='Keep practicing '
+                                    isSucceed={false}
+                                />
 
-        </div>
+                            }
+                            <div className="action-btns">
+                                <button className="primary-btn" onClick={() => setActivePage('practice-page')}>Try Again</button>
+                                <button className="secondary-btn" onClick={() => setActivePage('start-page')}>Finish practice</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+            }
+        </>
     )
 }
 
